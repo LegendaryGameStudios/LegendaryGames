@@ -9,8 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.SwingUtilities.*;
-import java.io.*;
-import java.util.Random;
 public class SimpleGUI implements ActionListener, KeyListener
 {
 	//Define GUI objects (widgets) that will comprise this GUI app
