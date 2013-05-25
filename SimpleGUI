@@ -14,11 +14,11 @@ import java.util.Random;
 public class SimpleGUI implements ActionListener, KeyListener
 {
 	//Define GUI objects (widgets) that will comprise this GUI app
-	public JFrame frame;			//Shell or container of entire app
+	public JFrame frame;		//Shell or container of entire app
 	public JPanel panel1, panel2;	//Can have multiple panels in a frame
 	public JTextField textField;	//A place for user to type text
-	public JButton button;			//A button
-	public JLabel result;			//A simple text element (output, not input)
+	public JButton button;		//A button
+	public JLabel result;		//A simple text element (output, not input)
 
 	/************************************************
 	* Screen size parameters (in pixels) optional.	*
@@ -70,8 +70,9 @@ public class SimpleGUI implements ActionListener, KeyListener
 	}
 
 	/************************************************************************************
-	* ActionListener is abstract so this method must be implemented
-	* Use this method to process actions triggered by the user (like button clicks)
+	* Action-Driven Methods
+	* 	-ActionListener is abstract so this method must be implemented
+	* 	-Use this method to process actions triggered by the user (like button clicks)
 	************************************************************************************/
 	public void actionPerformed(ActionEvent e)
 	{
@@ -88,8 +89,9 @@ public class SimpleGUI implements ActionListener, KeyListener
 	}
 	
 	/************************************************************************************
-	* KeyListener is abstract so the following methods must be implemented
-	* Use these methods to process events triggered by user key strokes
+	* Key-Driven Methods
+	* 	-KeyListener is abstract so the following methods must be implemented
+	* 	-Use these methods to process events triggered by user key strokes
 	************************************************************************************/
 	//Invoked when a key has been typed
 	public void keyTyped(KeyEvent e){}
