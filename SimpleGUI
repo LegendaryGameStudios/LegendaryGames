@@ -1,0 +1,112 @@
+/****************************************************************************************
+*  Created by Corey O'Neill
+*	May 25, 2013
+*	Directive: To demonstrate a simple functioning GUI. A text field exists for user to
+*		type text into. When the button is clicked, the text on the top label gets
+*		updated to what the user typed, and the text field resets to blank.
+****************************************************************************************/
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.SwingUtilities.*;
+import java.io.*;
+import java.util.Random;
+public class SimpleGUI implements ActionListener
+{
+	//Define GUI objects (widgets) that will comprise this GUI app
+	public JFrame frame;			//Shell or container of entire app
+	public JPanel panel1, panel2;	//Can have multiple panels in a frame
+	public JTextField textField;	//A place for user to type text
+	public JButton button;			//A button
+	public JLabel result;			//A simple text element (output, not input)
+
+	/************************************************
+	* Screen size parameters (in pixels) optional.	*
+	* private int x = 400;							*
+	* private int y = 100;							*
+	* If not used, framework will "wrap content."	*
+	************************************************/
+	/************************************************************************************
+	*	Constructor that creates all the GUI components and makes the frame visible.
+	************************************************************************************/
+	public SimpleGUI()
+	{
+		//Initialize the frame. Set program to terminate when "x" on frame is clicked.
+		frame = new JFrame("Frame's Name on Top of Screen");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		//Flow layout lists elements (buttons, labels...) left to right in order added
+		panel1 = new JPanel(new FlowLayout());
+		panel2 = new JPanel(new FlowLayout());
+
+		//Set up elements to be added to the panels
+		textField = new JTextField(32);		//User can type up 32 characters
+		button = new JButton("Click Me");	//Button will show "Click Me"
+		result = new JLabel("Waiting...");	//The user will update this text via typing into text field
+
+		//Add the elements to the panels
+		panel1.add(textField);
+		panel1.add(button);
+		panel2.add(result);
+
+		//Add panel(s) to frame
+		frame.getContentPane().add(BorderLayout.SOUTH, panel1);
+		frame.getContentPane().add(BorderLayout.NORTH, panel2);
+
+		//Action listener will call code when user triggers its element (ex: clicks button)
+		button.addActionListener(this);
+
+		//Configure GUI colors
+		panel1.setBackground(Color.DARK_GRAY);
+		panel2.setBackground(Color.GRAY);
+
+		//Package frame for delivery and make frame visible
+		frame.pack();
+		//frame.setSize(x,y);
+		frame.setResizable(true);
+		frame.setVisible(true);
+	}
+
+	//ActionListener is abstract so this method must be implemented
+	//Use this method to process user triggered events like button clicks
+	public void actionPerformed(ActionEvent e)
+	{
+		//If user clicked button...
+		if(e.getSource() == button)
+		{
+			//Set result label to user-typed text from text field
+			result.setText(textField.getText());
+			
+			//Reset text field to have no text
+			textField.setText(null);
+		}
+	}
+
+	//Required method. Always write this.
+	public static void createAndShowGUI()
+	{
+		try
+		{
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}
+		catch (Exception e) {}
+
+		//Launch the GUI - Note: We created the GUI in the constructor, called here.
+		SimpleGUI goowie = new SimpleGUI();
+	}
+
+	//Entry point into the program
+	public static void main(String [] args)
+	{
+		//Schedule a job for the event dispatch thread,
+		//Creating and showing this application's GUI
+		SwingUtilities.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				createAndShowGUI();
+			}
+		});
+		//NOTE the lambda expression, a function defined as it is being passed as a parameter.
+	} //end main
+}
