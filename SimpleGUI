@@ -1,5 +1,5 @@
 /****************************************************************************************
-*  Created by Corey O'Neill
+*	Created by Corey O'Neill
 *	May 25, 2013
 *	Directive: To demonstrate a simple functioning GUI. A text field exists for user to
 *		type text into. When the button is clicked, the text on the top label gets
@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.SwingUtilities.*;
 import java.io.*;
 import java.util.Random;
-public class SimpleGUI implements ActionListener
+public class SimpleGUI implements ActionListener, KeyListener
 {
 	//Define GUI objects (widgets) that will comprise this GUI app
 	public JFrame frame;			//Shell or container of entire app
@@ -22,8 +22,8 @@ public class SimpleGUI implements ActionListener
 
 	/************************************************
 	* Screen size parameters (in pixels) optional.	*
-	* private int x = 400;							*
-	* private int y = 100;							*
+	* private int x = 400;				*
+	* private int y = 100;				*
 	* If not used, framework will "wrap content."	*
 	************************************************/
 	/************************************************************************************
@@ -53,8 +53,10 @@ public class SimpleGUI implements ActionListener
 		frame.getContentPane().add(BorderLayout.SOUTH, panel1);
 		frame.getContentPane().add(BorderLayout.NORTH, panel2);
 
-		//Action listener will call code when user triggers its element (ex: clicks button)
-		button.addActionListener(this);
+		//Set listeners to call code by user triggered events
+		button.addActionListener(this);	//User action (clicks button)
+		button.addKeyListener(this);	//User keystroke when focus on button
+		textField.addKeyListener(this);	//User keystroke when focus on textfield
 
 		//Configure GUI colors
 		panel1.setBackground(Color.DARK_GRAY);
@@ -67,13 +69,16 @@ public class SimpleGUI implements ActionListener
 		frame.setVisible(true);
 	}
 
-	//ActionListener is abstract so this method must be implemented
-	//Use this method to process user triggered events like button clicks
+	/************************************************************************************
+	* ActionListener is abstract so this method must be implemented
+	* Use this method to process actions triggered by the user (like button clicks)
+	************************************************************************************/
 	public void actionPerformed(ActionEvent e)
 	{
 		//If user clicked button...
 		if(e.getSource() == button)
 		{
+			updateLabel();
 			//Set result label to user-typed text from text field
 			result.setText(textField.getText());
 			
@@ -81,7 +86,48 @@ public class SimpleGUI implements ActionListener
 			textField.setText(null);
 		}
 	}
-
+	
+	/************************************************************************************
+	* KeyListener is abstract so the following methods must be implemented
+	* Use these methods to process events triggered by user key strokes
+	************************************************************************************/
+	//Invoked when a key has been typed
+	public void keyTyped(KeyEvent e){}
+	
+	//Invoked when a key has been pressed.
+	public void keyPressed(KeyEvent e)
+	{
+		//Returns the integer keyCode for the key pressed and if it equals "Enter"...
+		if(e.getKeyCode() == KeyEvent.VK_ENTER)
+		{
+			updateLabel();
+		}
+	}
+	
+	//Invoked when a key has been released.
+	public void keyReleased(KeyEvent e){}
+	
+	/************************************************************************************
+	* Logic methods
+	************************************************************************************/
+	//Called on enter key or button click
+	public void updateLabel()
+	{
+		//If user-typed text equals "quit"
+		if(textField.getText().equals("quit"))
+			//Terminate the program
+			System.exit(-1);
+			
+		//Set result label to user-typed text from text field
+		result.setText(textField.getText());
+			
+		//Reset text field to have no text
+		textField.setText(null);
+	}
+	
+	/************************************************************************************
+	* Start up methods
+	************************************************************************************/
 	//Required method. Always write this.
 	public static void createAndShowGUI()
 	{
@@ -94,7 +140,7 @@ public class SimpleGUI implements ActionListener
 		//Launch the GUI - Note: We created the GUI in the constructor, called here.
 		SimpleGUI goowie = new SimpleGUI();
 	}
-
+	
 	//Entry point into the program
 	public static void main(String [] args)
 	{
