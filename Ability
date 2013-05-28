@@ -1,0 +1,17 @@
+/****************************************************************************************
+*  Created by Tom Benedict
+*	May 27, 2013
+*	Directive: Ability variables for polymorphism.
+****************************************************************************************/
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.SwingUtilities.*;
+public class Ability
+{
+
+	String abilityName; //name of the ability
+	String abilityType; //0 = Chi-Blocker, 1 = Air, 2 = Earth, 3 = Fire, 4 = Water
+	String description; //description of the ability
+
+}
