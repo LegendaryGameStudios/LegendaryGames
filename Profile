@@ -1,0 +1,18 @@
+/****************************************************************************************
+*  Created by Tom Benedict
+*	May 27, 2013
+*	Directive: Profile basics for each account, to be set or retrieved on login.
+****************************************************************************************/
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.SwingUtilities.*;
+public class Profile
+{
+
+	String emailAddress; //user's email address to log in with, and used for contact information
+	String password; //user's password to log in with
+
+	JList<Character> characters = new JList<Character>(); //list of characters user has created. [List used so that characters can be added, not a set number]
+
+}
