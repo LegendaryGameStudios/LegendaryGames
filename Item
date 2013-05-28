@@ -1,6 +1,6 @@
 /****************************************************************************************
-*  Created by Tom Benedict
-*	May 27, 2013
+*  Created by Tom Benedict with Corey O'Neill
+*	Last updated: May 28, 2013
 *	Directive: Item variables for polymorphism.
 ****************************************************************************************/
 import java.awt.*;
@@ -28,16 +28,14 @@ public class Item
 	* static final integers, we know the subclass immediately.
 	*******************************************************************************/
 	
-	String description; //description of them item
-	String itemName; //item name (can be specilized if crafted)
-	String itemSubtype; //item subtype, ie. weapon type (bow, axe, sword ect.), armor type (chest, hands, legs, feet, ect.), consumable type (+HP, +CHI ect.), clothing type (robes, cape, shirt, pants, hats, ect.)
-	int augmentationSlots; //how many augments the item can have
-	int itemType; //item type, ie. weapon, armor, consumable, clothing ect.
-	int itemValue; //the value of the item
-	int itemQuantity; //how many of the item are held
-	int itemCondition; //out of 100(%), what is the operatiing condition of the item
+	String description;	//description of them item
+	String itemName;	//item name (can be specilized if crafted)
+	String itemSubtype;	//item subtype, ie. weapon type (bow, axe, sword ect.), armor type (chest, hands, legs, feet, ect.), consumable type (+HP, +CHI ect.), clothing type (robes, cape, shirt, pants, hats, ect.)
+	int augmentationSlots;	//how many augments the item can have
+	int itemType;		//item type, ie. weapon, armor, consumable, clothing ect.
+	int itemValue;		//the value of the item
+	int itemQuantity;	//how many of the item are held
+	int itemCondition;	//out of 100(%), what is the operatiing condition of the item
 
 	//more variables to be added for item specifics as we continue to develop them.
-
-
 }
