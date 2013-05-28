@@ -1,0 +1,32 @@
+/****************************************************************************************
+*  Created by Tom Benedict
+*	May 27, 2013
+*	Directive: Character variables for polymorphism.
+****************************************************************************************/
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.SwingUtilities.*;
+public class Character
+{
+
+	String characterName; //name of character
+	int characterType; //0 = chi-blocker, 1 = bender
+	int nation; //0 = Air, 1 = Earth, 2 = Fire, 3 = Water
+
+	int faction; //which player established faction the character has joined, 0 if none
+	int citizenship; //which city the character has citizenship to, 0 if none
+	int allignment; //which nation the character is alligned to, 0 if none
+	int wealth; //character's current wealth
+	long characterXP; //character's current experience
+	int level; //character's current level
+
+	JList<Ability> ability = new JList<Ability>(); //character's known abilities [List used so that abilites can be added as found, not a set number]
+	JList<Long> abilityXP = new JList<Long>(); //character's experience with each ability (only Long would work for JList, would prefer long if possible)
+	JList<Long> abilityUses = new JList<Long>(); //character's # of uses for each ability (only Long would work for JList, would prefer long if possible)
+
+	JList<Item> inventory = new JList<Item>(); //character's items in inventory
+	Item[] equipped = new Item[12]; //character's equipped items [set number used for equipped items, as we will want to limit this 12 can be changed to whatever we want later]
+
+
+}
