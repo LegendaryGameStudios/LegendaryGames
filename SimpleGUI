@@ -78,11 +78,6 @@ public class SimpleGUI implements ActionListener, KeyListener
 		if(e.getSource() == button)
 		{
 			updateLabel();
-			//Set result label to user-typed text from text field
-			result.setText(textField.getText());
-			
-			//Reset text field to have no text
-			textField.setText(null);
 		}
 	}
 	
