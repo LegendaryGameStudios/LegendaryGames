@@ -9,17 +9,33 @@ import javax.swing.*;
 import javax.swing.SwingUtilities.*;
 public class Item
 {
+	//PUBLIC STATIC FINAL CONTSTANTS
+	public static final int GENERIC = 0;
+	public static final int CONSUMABLE = 1;
+	public static final int CLOTHING = 2;
+	public static final int WEAPON = 3;
+	public static final int ARMOR = 4;
+	/*******************************************************************************
+	* Item Type can be used like this example:
+	* 	itemType = Item.WEAPON;
+	* 	if(toon.getItem().itemType == Item.WEAPON)...
+	*
+	* Alternatively, we do not need these constants and can do the following:
+	* 	Item blunt_object = new Weapon();
+	* 	if(blunt_object instanceof Weapon)
+	* The con for instanceof is that we would need to check the Item type against
+	* every possible subclass of Item until we get true. If we keep track with
+	* static final integers, we know the subclass immediately.
+	*******************************************************************************/
+	
+	String description; //description of them item
 	String itemName; //item name (can be specilized if crafted)
-	String itemType; //item type, ie. weapon, armor, consumable, clothing ect.
 	String itemSubtype; //item subtype, ie. weapon type (bow, axe, sword ect.), armor type (chest, hands, legs, feet, ect.), consumable type (+HP, +CHI ect.), clothing type (robes, cape, shirt, pants, hats, ect.)
 	int augmentationSlots; //how many augments the item can have
-
-
+	int itemType; //item type, ie. weapon, armor, consumable, clothing ect.
 	int itemValue; //the value of the item
 	int itemQuantity; //how many of the item are held
 	int itemCondition; //out of 100(%), what is the operatiing condition of the item
-
-	String description; //description of them item
 
 	//more variables to be added for item specifics as we continue to develop them.
 
